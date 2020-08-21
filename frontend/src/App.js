@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import SearchBox from "./SearchBox";
 import Main from "./Main";
+import Facebook from "./Facebook";
 import axios from "axios";
-// 
+import Login from "./Login";
+import Register from "./Register";
+import { BrowserRouter, Link, Route } from "react-router-dom";
 
 function App() {
   const [cars, setCars] = useState([]);
@@ -52,19 +55,26 @@ function App() {
   };
 
   return (
-    <div>
-      <SearchBox
-        carNameFilter={carNameFilter}
-        updateModelFilter={(e) => updateModelFilter(e.target.value)}
-        carYearFilter={carYearFilter}
-        updateYearFilter={(e) => updateYearFilter(e.target.value)}
-      />
-      <Main
-        filteredCar={filteredCar || cars}
-        filteredYear={filteredYear || cars}
-      />
-      ;
-    </div>
+    <BrowserRouter>
+      <div>
+        <Link to="/login">login</Link>
+        <Link to="/register">register</Link>
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+        <Facebook />
+        <SearchBox
+          carNameFilter={carNameFilter}
+          updateModelFilter={(e) => updateModelFilter(e.target.value)}
+          carYearFilter={carYearFilter}
+          updateYearFilter={(e) => updateYearFilter(e.target.value)}
+        />
+        <Main
+          filteredCar={filteredCar || cars}
+          filteredYear={filteredYear || cars}
+        />
+        ;
+      </div>{" "}
+    </BrowserRouter>
   );
 }
 
