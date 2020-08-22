@@ -7,6 +7,7 @@ const cookieParser = require("cookie-parser");
 const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const bodyParser = require("body-parser");
+const User = require("./user");
 
 mongoose.connect(
   "mongodb+srv://jonas:mKb1X7ujP1atgm7C@cluster0-abqmy.mongodb.net/test",
